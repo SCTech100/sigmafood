@@ -39,7 +39,7 @@ dependencies:
   build_runner: ^2.1.5
   moor_flutter:
   flutter_modular:
-  sqflite:
+  dartz:
 
 dev_dependencies:
   freezed: ^1.0.0

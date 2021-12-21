@@ -5,6 +5,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        Container(
+          child: ListView.builder(
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Container(
+                child: Text('A'),
+              );
+            },
+          ),
+        ),
+        Expanded(
+            child: Container(
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                child: Text('A'),
+              );
+            },
+          ),
+        )),
+      ],
+    );
   }
 }
