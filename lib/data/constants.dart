@@ -1,3 +1,3 @@
 class Constants {
-  static String url = '';
+  static String url = 'www.themealdb.com';
 }
