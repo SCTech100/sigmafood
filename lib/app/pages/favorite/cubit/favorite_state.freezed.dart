@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'meal_state.dart';
+part of 'favorite_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,74 +14,71 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$MealStateTearOff {
-  const _$MealStateTearOff();
+class _$FavoriteStateTearOff {
+  const _$FavoriteStateTearOff();
 
   _Initial call(
-      {Meal? meal,
+      {List<Meal> listFavoriteMeal = const [],
       bool isLoading = false,
       bool hasError = false,
-      String errorMessage = '',
-      bool isFavorite = false}) {
+      String errorMessage = ''}) {
     return _Initial(
-      meal: meal,
+      listFavoriteMeal: listFavoriteMeal,
       isLoading: isLoading,
       hasError: hasError,
       errorMessage: errorMessage,
-      isFavorite: isFavorite,
     );
   }
 }
 
 /// @nodoc
-const $MealState = _$MealStateTearOff();
+const $FavoriteState = _$FavoriteStateTearOff();
 
 /// @nodoc
-mixin _$MealState {
-  Meal? get meal => throw _privateConstructorUsedError;
+mixin _$FavoriteState {
+  List<Meal> get listFavoriteMeal => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
-  bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MealStateCopyWith<MealState> get copyWith =>
+  $FavoriteStateCopyWith<FavoriteState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MealStateCopyWith<$Res> {
-  factory $MealStateCopyWith(MealState value, $Res Function(MealState) then) =
-      _$MealStateCopyWithImpl<$Res>;
+abstract class $FavoriteStateCopyWith<$Res> {
+  factory $FavoriteStateCopyWith(
+          FavoriteState value, $Res Function(FavoriteState) then) =
+      _$FavoriteStateCopyWithImpl<$Res>;
   $Res call(
-      {Meal? meal,
+      {List<Meal> listFavoriteMeal,
       bool isLoading,
       bool hasError,
-      String errorMessage,
-      bool isFavorite});
+      String errorMessage});
 }
 
 /// @nodoc
-class _$MealStateCopyWithImpl<$Res> implements $MealStateCopyWith<$Res> {
-  _$MealStateCopyWithImpl(this._value, this._then);
+class _$FavoriteStateCopyWithImpl<$Res>
+    implements $FavoriteStateCopyWith<$Res> {
+  _$FavoriteStateCopyWithImpl(this._value, this._then);
 
-  final MealState _value;
+  final FavoriteState _value;
   // ignore: unused_field
-  final $Res Function(MealState) _then;
+  final $Res Function(FavoriteState) _then;
 
   @override
   $Res call({
-    Object? meal = freezed,
+    Object? listFavoriteMeal = freezed,
     Object? isLoading = freezed,
     Object? hasError = freezed,
     Object? errorMessage = freezed,
-    Object? isFavorite = freezed,
   }) {
     return _then(_value.copyWith(
-      meal: meal == freezed
-          ? _value.meal
-          : meal // ignore: cast_nullable_to_non_nullable
-              as Meal?,
+      listFavoriteMeal: listFavoriteMeal == freezed
+          ? _value.listFavoriteMeal
+          : listFavoriteMeal // ignore: cast_nullable_to_non_nullable
+              as List<Meal>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -94,29 +91,24 @@ class _$MealStateCopyWithImpl<$Res> implements $MealStateCopyWith<$Res> {
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
-      isFavorite: isFavorite == freezed
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> implements $MealStateCopyWith<$Res> {
+abstract class _$InitialCopyWith<$Res> implements $FavoriteStateCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Meal? meal,
+      {List<Meal> listFavoriteMeal,
       bool isLoading,
       bool hasError,
-      String errorMessage,
-      bool isFavorite});
+      String errorMessage});
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$MealStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$FavoriteStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -126,17 +118,16 @@ class __$InitialCopyWithImpl<$Res> extends _$MealStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? meal = freezed,
+    Object? listFavoriteMeal = freezed,
     Object? isLoading = freezed,
     Object? hasError = freezed,
     Object? errorMessage = freezed,
-    Object? isFavorite = freezed,
   }) {
     return _then(_Initial(
-      meal: meal == freezed
-          ? _value.meal
-          : meal // ignore: cast_nullable_to_non_nullable
-              as Meal?,
+      listFavoriteMeal: listFavoriteMeal == freezed
+          ? _value.listFavoriteMeal
+          : listFavoriteMeal // ignore: cast_nullable_to_non_nullable
+              as List<Meal>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -149,10 +140,6 @@ class __$InitialCopyWithImpl<$Res> extends _$MealStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
-      isFavorite: isFavorite == freezed
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -161,14 +148,14 @@ class __$InitialCopyWithImpl<$Res> extends _$MealStateCopyWithImpl<$Res>
 
 class _$_Initial implements _Initial {
   const _$_Initial(
-      {this.meal,
+      {this.listFavoriteMeal = const [],
       this.isLoading = false,
       this.hasError = false,
-      this.errorMessage = '',
-      this.isFavorite = false});
+      this.errorMessage = ''});
 
+  @JsonKey()
   @override
-  final Meal? meal;
+  final List<Meal> listFavoriteMeal;
   @JsonKey()
   @override
   final bool isLoading;
@@ -178,13 +165,10 @@ class _$_Initial implements _Initial {
   @JsonKey()
   @override
   final String errorMessage;
-  @JsonKey()
-  @override
-  final bool isFavorite;
 
   @override
   String toString() {
-    return 'MealState(meal: $meal, isLoading: $isLoading, hasError: $hasError, errorMessage: $errorMessage, isFavorite: $isFavorite)';
+    return 'FavoriteState(listFavoriteMeal: $listFavoriteMeal, isLoading: $isLoading, hasError: $hasError, errorMessage: $errorMessage)';
   }
 
   @override
@@ -192,23 +176,21 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Initial &&
-            const DeepCollectionEquality().equals(other.meal, meal) &&
+            const DeepCollectionEquality()
+                .equals(other.listFavoriteMeal, listFavoriteMeal) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.hasError, hasError) &&
             const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.isFavorite, isFavorite));
+                .equals(other.errorMessage, errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(meal),
+      const DeepCollectionEquality().hash(listFavoriteMeal),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(hasError),
-      const DeepCollectionEquality().hash(errorMessage),
-      const DeepCollectionEquality().hash(isFavorite));
+      const DeepCollectionEquality().hash(errorMessage));
 
   @JsonKey(ignore: true)
   @override
@@ -216,24 +198,21 @@ class _$_Initial implements _Initial {
       __$InitialCopyWithImpl<_Initial>(this, _$identity);
 }
 
-abstract class _Initial implements MealState {
+abstract class _Initial implements FavoriteState {
   const factory _Initial(
-      {Meal? meal,
+      {List<Meal> listFavoriteMeal,
       bool isLoading,
       bool hasError,
-      String errorMessage,
-      bool isFavorite}) = _$_Initial;
+      String errorMessage}) = _$_Initial;
 
   @override
-  Meal? get meal;
+  List<Meal> get listFavoriteMeal;
   @override
   bool get isLoading;
   @override
   bool get hasError;
   @override
   String get errorMessage;
-  @override
-  bool get isFavorite;
   @override
   @JsonKey(ignore: true)
   _$InitialCopyWith<_Initial> get copyWith =>

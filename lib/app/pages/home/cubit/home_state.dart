@@ -12,6 +12,7 @@ class HomeState with _$HomeState {
     @Default(false) bool hasError,
     @Default('') String errorMessage,
     @Default([]) List<MealCategory> listMealCategory,
+    MealCategory? selectedCategory,
     @Default([]) List<Meal> listMeal,
   }) = _Initial;
 }

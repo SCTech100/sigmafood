@@ -23,6 +23,7 @@ class _$HomeStateTearOff {
       bool hasError = false,
       String errorMessage = '',
       List<MealCategory> listMealCategory = const [],
+      MealCategory? selectedCategory,
       List<Meal> listMeal = const []}) {
     return _Initial(
       isLoading: isLoading,
@@ -30,6 +31,7 @@ class _$HomeStateTearOff {
       hasError: hasError,
       errorMessage: errorMessage,
       listMealCategory: listMealCategory,
+      selectedCategory: selectedCategory,
       listMeal: listMeal,
     );
   }
@@ -45,6 +47,7 @@ mixin _$HomeState {
   bool get hasError => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
   List<MealCategory> get listMealCategory => throw _privateConstructorUsedError;
+  MealCategory? get selectedCategory => throw _privateConstructorUsedError;
   List<Meal> get listMeal => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -62,6 +65,7 @@ abstract class $HomeStateCopyWith<$Res> {
       bool hasError,
       String errorMessage,
       List<MealCategory> listMealCategory,
+      MealCategory? selectedCategory,
       List<Meal> listMeal});
 }
 
@@ -80,6 +84,7 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
     Object? hasError = freezed,
     Object? errorMessage = freezed,
     Object? listMealCategory = freezed,
+    Object? selectedCategory = freezed,
     Object? listMeal = freezed,
   }) {
     return _then(_value.copyWith(
@@ -103,6 +108,10 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.listMealCategory
           : listMealCategory // ignore: cast_nullable_to_non_nullable
               as List<MealCategory>,
+      selectedCategory: selectedCategory == freezed
+          ? _value.selectedCategory
+          : selectedCategory // ignore: cast_nullable_to_non_nullable
+              as MealCategory?,
       listMeal: listMeal == freezed
           ? _value.listMeal
           : listMeal // ignore: cast_nullable_to_non_nullable
@@ -122,6 +131,7 @@ abstract class _$InitialCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       bool hasError,
       String errorMessage,
       List<MealCategory> listMealCategory,
+      MealCategory? selectedCategory,
       List<Meal> listMeal});
 }
 
@@ -141,6 +151,7 @@ class __$InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     Object? hasError = freezed,
     Object? errorMessage = freezed,
     Object? listMealCategory = freezed,
+    Object? selectedCategory = freezed,
     Object? listMeal = freezed,
   }) {
     return _then(_Initial(
@@ -164,6 +175,10 @@ class __$InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value.listMealCategory
           : listMealCategory // ignore: cast_nullable_to_non_nullable
               as List<MealCategory>,
+      selectedCategory: selectedCategory == freezed
+          ? _value.selectedCategory
+          : selectedCategory // ignore: cast_nullable_to_non_nullable
+              as MealCategory?,
       listMeal: listMeal == freezed
           ? _value.listMeal
           : listMeal // ignore: cast_nullable_to_non_nullable
@@ -181,6 +196,7 @@ class _$_Initial implements _Initial {
       this.hasError = false,
       this.errorMessage = '',
       this.listMealCategory = const [],
+      this.selectedCategory,
       this.listMeal = const []});
 
   @JsonKey()
@@ -198,13 +214,15 @@ class _$_Initial implements _Initial {
   @JsonKey()
   @override
   final List<MealCategory> listMealCategory;
+  @override
+  final MealCategory? selectedCategory;
   @JsonKey()
   @override
   final List<Meal> listMeal;
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, isLoadingMeal: $isLoadingMeal, hasError: $hasError, errorMessage: $errorMessage, listMealCategory: $listMealCategory, listMeal: $listMeal)';
+    return 'HomeState(isLoading: $isLoading, isLoadingMeal: $isLoadingMeal, hasError: $hasError, errorMessage: $errorMessage, listMealCategory: $listMealCategory, selectedCategory: $selectedCategory, listMeal: $listMeal)';
   }
 
   @override
@@ -220,6 +238,8 @@ class _$_Initial implements _Initial {
                 .equals(other.errorMessage, errorMessage) &&
             const DeepCollectionEquality()
                 .equals(other.listMealCategory, listMealCategory) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedCategory, selectedCategory) &&
             const DeepCollectionEquality().equals(other.listMeal, listMeal));
   }
 
@@ -231,6 +251,7 @@ class _$_Initial implements _Initial {
       const DeepCollectionEquality().hash(hasError),
       const DeepCollectionEquality().hash(errorMessage),
       const DeepCollectionEquality().hash(listMealCategory),
+      const DeepCollectionEquality().hash(selectedCategory),
       const DeepCollectionEquality().hash(listMeal));
 
   @JsonKey(ignore: true)
@@ -246,6 +267,7 @@ abstract class _Initial implements HomeState {
       bool hasError,
       String errorMessage,
       List<MealCategory> listMealCategory,
+      MealCategory? selectedCategory,
       List<Meal> listMeal}) = _$_Initial;
 
   @override
@@ -258,6 +280,8 @@ abstract class _Initial implements HomeState {
   String get errorMessage;
   @override
   List<MealCategory> get listMealCategory;
+  @override
+  MealCategory? get selectedCategory;
   @override
   List<Meal> get listMeal;
   @override

@@ -1,15 +1,13 @@
 import 'package:foodtest/domain/models/remote/meal_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'meal_state.freezed.dart';
+part 'favorite_state.freezed.dart';
 
 @freezed
-class MealState with _$MealState {
-  const factory MealState({
-    Meal? meal,
+class FavoriteState with _$FavoriteState {
+  const factory FavoriteState({
+    @Default([]) List<Meal> listFavoriteMeal,
     @Default(false) bool isLoading,
     @Default(false) bool hasError,
     @Default('') String errorMessage,
-    @Default(false) bool isFavorite,
   }) = _Initial;
 }

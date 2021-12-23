@@ -14,10 +14,12 @@ class MealCategoryResponse {
 
   MealCategoryResponse.fromJson(Map<String, dynamic> json) {
     if (json['categories'] != null) {
-      List<MealCategory> mealCategoryList = [];
-      json['categories'].forEach((v) {
-        mealCategoryList.add(MealCategory.fromMap(v));
+      List<MealCategory> newList = [];
+      List categories = json['categories'];
+      categories.forEach((v) {
+        newList.add(MealCategory.fromMap(v));
       });
+      mealCategoryList = newList;
     }
   }
 }

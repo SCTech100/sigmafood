@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:foodtest/app/utils/dio_client.dart';
 import 'package:foodtest/app/utils/dio_result.dart';
 import 'package:foodtest/app/utils/safecallapi.dart';
 
 abstract class Repository {
-  final Dio _dio;
-  Repository(this._dio);
+  final DioClient http;
+  Repository(this.http);
 
   Future<Result<T>> get<T>(
     String endpoint, {
@@ -12,10 +13,8 @@ abstract class Repository {
     Map<String, dynamic>? queryParameters,
     required ResponseConverter<T> converter,
   }) async {
-    Options opsi = Options(headers: headers);
     var response = await safeCallApi(
-        _dio.get(endpoint, queryParameters: queryParameters, options: opsi),
-        converter);
+        http.dio.get(endpoint, queryParameters: queryParameters), converter);
     return response;
   }
 
@@ -28,7 +27,7 @@ abstract class Repository {
   }) async {
     Options opsi = Options(headers: headers);
     var response = await safeCallApi(
-        _dio.post(endpoint,
+        http.dio.post(endpoint,
             queryParameters: queryParameters, data: data, options: opsi),
         converter);
     return response;
@@ -45,7 +44,7 @@ abstract class Repository {
   }) async {
     Options opsi = Options(headers: headers);
     var response = await safeCallApi(
-        _dio.download(
+        http.dio.download(
           endpoint,
           savePath,
           queryParameters: queryParameters,
