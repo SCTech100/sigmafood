@@ -75,7 +75,8 @@ class HomeView extends StatelessWidget {
                                               contentPadding:
                                                   EdgeInsets.fromLTRB(
                                                       10, 10, 0, 10),
-                                              hintText: 'Search',
+                                              hintText:
+                                                  'What are you craving for',
                                               hintStyle:
                                                   TextStyle(color: Colors.grey),
                                               border: InputBorder.none)),
@@ -100,18 +101,21 @@ class HomeView extends StatelessWidget {
                             Positioned(
                               bottom: 5,
                               right: 5,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.red,
-                                ),
-                                alignment: Alignment.center,
-                                height: 18,
-                                width: 18,
-                                child: Text(
-                                  state.favoriteCount,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 10),
+                              child: Visibility(
+                                visible: state.favoriteCount != '0',
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.red,
+                                  ),
+                                  alignment: Alignment.center,
+                                  height: 18,
+                                  width: 18,
+                                  child: Text(
+                                    state.favoriteCount,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(fontSize: 10),
+                                  ),
                                 ),
                               ),
                             )

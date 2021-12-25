@@ -39,9 +39,10 @@ flutter_icons:
   image_path: "assets/images/logo.png"
 
 flutter_native_splash:
-  background_image: "assets/images/logo.png"
+  image: "assets/images/splash.png"
   android_gravity: center
-  fullscreen: false
+  fullscreen: true
+  color: "#ffffff"
 
 flutter:
   uses-material-design: true
