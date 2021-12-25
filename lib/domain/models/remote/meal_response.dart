@@ -4,7 +4,7 @@ class MealResponse {
   int? page;
   int? totalResults;
   int? totalPages;
-  List<Meal>? mealList;
+  List<MealModel>? mealList;
 
   MealResponse(
       {this.page,
@@ -15,31 +15,31 @@ class MealResponse {
   MealResponse.fromJson(Map<String, dynamic> json) {
     if (json['meals'] != null) {
       List list = json['meals'];
-      List<Meal> newList = [];
+      List<MealModel> newList = [];
       list.forEach((v) {
-        newList.add(Meal.fromMap(v));
+        newList.add(MealModel.fromMap(v));
       });
       mealList = newList;
     }
   }
 }
 
-class Meal {
+class MealModel {
   String? idMeal;
   String? strMeal;
   String? strMealThumb;
-  Meal({
+  MealModel({
     this.idMeal,
     this.strMeal,
     this.strMealThumb,
   });
 
-  Meal copyWith({
+  MealModel copyWith({
     String? idMeal,
     String? strMeal,
     String? strMealThumb,
   }) {
-    return Meal(
+    return MealModel(
       idMeal: idMeal ?? this.idMeal,
       strMeal: strMeal ?? this.strMeal,
       strMealThumb: strMealThumb ?? this.strMealThumb,
@@ -54,8 +54,8 @@ class Meal {
     };
   }
 
-  factory Meal.fromMap(Map<String, dynamic> map) {
-    return Meal(
+  factory MealModel.fromMap(Map<String, dynamic> map) {
+    return MealModel(
       idMeal: map['idMeal'],
       strMeal: map['strMeal'],
       strMealThumb: map['strMealThumb'],
@@ -64,17 +64,18 @@ class Meal {
 
   String toJson() => json.encode(toMap());
 
-  factory Meal.fromJson(String source) => Meal.fromMap(json.decode(source));
+  factory MealModel.fromJson(String source) =>
+      MealModel.fromMap(json.decode(source));
 
   @override
   String toString() =>
-      'Meal(idMeal: $idMeal, strMeal: $strMeal, strMealThumb: $strMealThumb)';
+      'MealModel(idMeal: $idMeal, strMeal: $strMeal, strMealThumb: $strMealThumb)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Meal &&
+    return other is MealModel &&
         other.idMeal == idMeal &&
         other.strMeal == strMeal &&
         other.strMealThumb == strMealThumb;

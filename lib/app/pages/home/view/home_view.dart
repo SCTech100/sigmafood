@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodtest/app/pages/favorite/view/favorite_view.dart';
 import 'package:foodtest/app/pages/home/cubit/home_cubit.dart';
 import 'package:foodtest/app/pages/home/cubit/home_state.dart';
 import 'package:foodtest/app/pages/meal/view/meal_view.dart';
+import 'package:foodtest/app/pages/searchmeal/view/searchmeal_view.dart';
+import 'package:foodtest/app/widgets/meal_loadinggrid_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StatelessWidget {
@@ -27,41 +30,10 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget getLoadingMeal() {
-    return Shimmer.fromColors(
-      baseColor: Colors.grey[300]!,
-      highlightColor: Colors.grey[100]!,
-      child: GridView.builder(
-        itemCount: 10,
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (context, index) {
-          return Container(
-            padding: EdgeInsets.all(10),
-            height: 200,
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                )
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
-      create: (context) => HomeCubit()..initView(),
+      create: (context) => HomeCubit()..initView(context),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {
           HomeCubit cubit = context.read<HomeCubit>();
@@ -74,22 +46,85 @@ class HomeView extends StatelessWidget {
             body: SafeArea(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      cubit.initView();
-                    },
-                    child: Container(
-                      child: Text(
-                        'Welcome to Sigma Food',
-                        style: TextStyle(fontSize: 22),
-                      ),
+                  Container(
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(8))),
+                                      child: TextFormField(
+                                          readOnly: true,
+                                          onTap: () {
+                                            Navigator.push(context,
+                                                MaterialPageRoute(
+                                                    builder: (context) {
+                                              return SearchMealView();
+                                            }));
+                                          },
+                                          decoration: InputDecoration(
+                                              contentPadding:
+                                                  EdgeInsets.fromLTRB(
+                                                      10, 10, 0, 10),
+                                              hintText: 'Search',
+                                              hintStyle:
+                                                  TextStyle(color: Colors.grey),
+                                              border: InputBorder.none)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Stack(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) {
+                                      return FavoriteView();
+                                    },
+                                  ));
+                                },
+                                icon: Icon(Icons.favorite)),
+                            Positioned(
+                              bottom: 5,
+                              right: 5,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.red,
+                                ),
+                                alignment: Alignment.center,
+                                height: 18,
+                                width: 18,
+                                child: Text(
+                                  state.favoriteCount,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
                   Container(
-                    height: 70,
+                    height: 50,
                     child: state.isLoading
                         ? getLoadingMealCategory()
                         : ListView.builder(
@@ -100,7 +135,8 @@ class HomeView extends StatelessWidget {
                                   state.listMealCategory[index].strCategory ??
                                       '';
                               return Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
+                                padding:
+                                    const EdgeInsets.only(left: 8, right: 4),
                                 child: GestureDetector(
                                   child: Chip(
                                     label: Text(name,
@@ -124,7 +160,7 @@ class HomeView extends StatelessWidget {
                   Expanded(
                       child: Container(
                     child: state.isLoadingMeal
-                        ? getLoadingMeal()
+                        ? MealLoadingGridWidget()
                         : RefreshIndicator(
                             onRefresh: () async {
                               cubit.fetchDataByCategory(
@@ -166,16 +202,42 @@ class HomeView extends StatelessWidget {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10)),
-                                                child: ClipRect(
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
                                                   child: Image.network(
                                                     strMealThumb,
                                                     errorBuilder: (context,
                                                         error, stackTrace) {
                                                       return Icon(Icons.error);
                                                     },
+                                                    loadingBuilder: (BuildContext
+                                                            context,
+                                                        Widget child,
+                                                        ImageChunkEvent?
+                                                            loadingProgress) {
+                                                      if (loadingProgress ==
+                                                          null) return child;
+                                                      return Center(
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          value: loadingProgress
+                                                                      .expectedTotalBytes !=
+                                                                  null
+                                                              ? loadingProgress
+                                                                      .cumulativeBytesLoaded /
+                                                                  loadingProgress
+                                                                      .expectedTotalBytes!
+                                                              : null,
+                                                        ),
+                                                      );
+                                                    },
                                                   ),
                                                 ),
                                               ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
                                             ),
                                             Container(
                                                 height: 20,

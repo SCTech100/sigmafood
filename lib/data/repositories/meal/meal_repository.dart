@@ -26,90 +26,13 @@ class MealRepository extends Repository {
     });
     return result;
   }
-  // Future<Either<Failure, Map<String, dynamic>>> getMealListBySearch(
-  //     String search,
-  //     [int? page,
-  //     String? filter,
-  //     int? rowCount]) async {
-  //   bool hasError = false;
-  //   Failure? failure;
-  //   Map<String, dynamic>? res;
-  //   try {
-  //     Response response = await Dio().get(
-  //       "https://www.themealdb.com/api/json/v1/1/search.php ",
-  //       queryParameters: {"s": search},
-  //       options: Options(contentType: Headers.jsonContentType),
-  //     );
-  //     if (response.statusCode == 200) {
-  //       res = response.data;
-  //     } else {
-  //       throw response.statusMessage ?? 'Unknown server error';
-  //     }
-  //   } catch (e) {
-  //     String errorMessage = e.toString();
-  //     hasError = true;
-  //     if (e is DioError) {
-  //       errorMessage = e.message;
-  //     }
-  //     failure = Failure(errorMessage);
-  //   }
-  //   return hasError ? Left(failure!) : Right(res!);
-  // }
 
-  // Future<Either<Failure, Map<String, dynamic>>> getMealCategoryList(
-  //     [int? page, String? filter, int? rowCount]) async {
-  //   bool hasError = false;
-  //   Failure? failure;
-  //   Map<String, dynamic>? res;
-  //   try {
-  //     Response response = await Dio().get(
-  //       "https://www.themealdb.com/api/json/v1/1/categories.php",
-  //       queryParameters: {},
-  //       options: Options(contentType: Headers.jsonContentType),
-  //     );
-  //     if (response.statusCode == 200) {
-  //       res = response.data;
-  //     } else {
-  //       throw response.statusMessage ?? 'Unknown server error';
-  //     }
-  //   } catch (e) {
-  //     String errorMessage = e.toString();
-  //     hasError = true;
-  //     if (e is DioError) {
-  //       errorMessage = e.message;
-  //     }
-  //     failure = Failure(errorMessage);
-  //   }
-  //   return hasError ? Left(failure!) : Right(res!);
-  // }
-
-  // Future<Either<Failure, Map<String, dynamic>>> getMealListByCategory(
-  //     String category,
-  //     [int? page,
-  //     String? filter,
-  //     int? rowCount]) async {
-  //   bool hasError = false;
-  //   Failure? failure;
-  //   Map<String, dynamic>? res;
-  //   try {
-  //     Response response = await Dio().get(
-  //       "www.themealdb.com/api/json/v1/1/filter.php ",
-  //       queryParameters: {"c": category},
-  //       options: Options(contentType: Headers.jsonContentType),
-  //     );
-  //     if (response.statusCode == 200) {
-  //       res = response.data;
-  //     } else {
-  //       throw response.statusMessage ?? 'Unknown server error';
-  //     }
-  //   } catch (e) {
-  //     String errorMessage = e.toString();
-  //     hasError = true;
-  //     if (e is DioError) {
-  //       errorMessage = e.message;
-  //     }
-  //     failure = Failure(errorMessage);
-  //   }
-  //   return hasError ? Left(failure!) : Right(res!);
-  // }
+  Future<Result<MealResponse>> fetchMealBySearch(String search) async {
+    String url = "/api/json/v1/1/search.php";
+    final result = await get(url, headers: {}, queryParameters: {'s': search},
+        converter: (response) {
+      return MealResponse.fromJson(response);
+    });
+    return result;
+  }
 }

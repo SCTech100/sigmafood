@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:foodtest/data/local/db/database_manager.dart';
 import 'package:foodtest/routes/app_pages.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,19 +25,38 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sigma Food',
-      themeMode: ThemeMode.light,
-      routes: AppRoutes.routes,
-      navigatorKey: navigatorKey,
-      initialRoute: AppRoutes.HOME,
-      theme: ThemeData.dark(),
-      builder: EasyLoading.init(
-        builder: (context, child) {
-          return child!;
-        },
-      ),
-      debugShowCheckedModeBanner: false,
+    return Provider(
+      create: (_) => AppDatabase().mealDao,
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Sigma Food',
+          themeMode: ThemeMode.light,
+          routes: AppRoutes.routes,
+          navigatorKey: navigatorKey,
+          initialRoute: AppRoutes.HOME,
+          theme: ThemeData.dark(),
+          builder: EasyLoading.init(
+            builder: (context, child) {
+              return child!;
+            },
+          ),
+          debugShowCheckedModeBanner: false,
+        );
+      },
+      // child: MaterialApp(
+      //   title: 'Sigma Food',
+      //   themeMode: ThemeMode.light,
+      //   routes: AppRoutes.routes,
+      //   navigatorKey: navigatorKey,
+      //   initialRoute: AppRoutes.HOME,
+      //   theme: ThemeData.dark(),
+      //   builder: EasyLoading.init(
+      //     builder: (context, child) {
+      //       return child!;
+      //     },
+      //   ),
+      //   debugShowCheckedModeBanner: false,
+      // ),
     );
   }
 }

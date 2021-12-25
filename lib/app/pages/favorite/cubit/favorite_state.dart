@@ -5,7 +5,7 @@ part 'favorite_state.freezed.dart';
 @freezed
 class FavoriteState with _$FavoriteState {
   const factory FavoriteState({
-    @Default([]) List<Meal> listFavoriteMeal,
+    @Default([]) List<MealModel> listFavoriteMeal,
     @Default(false) bool isLoading,
     @Default(false) bool hasError,
     @Default('') String errorMessage,

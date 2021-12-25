@@ -18,7 +18,7 @@ class _$MealStateTearOff {
   const _$MealStateTearOff();
 
   _Initial call(
-      {Meal? meal,
+      {MealModel? meal,
       bool isLoading = false,
       bool hasError = false,
       String errorMessage = '',
@@ -38,7 +38,7 @@ const $MealState = _$MealStateTearOff();
 
 /// @nodoc
 mixin _$MealState {
-  Meal? get meal => throw _privateConstructorUsedError;
+  MealModel? get meal => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ abstract class $MealStateCopyWith<$Res> {
   factory $MealStateCopyWith(MealState value, $Res Function(MealState) then) =
       _$MealStateCopyWithImpl<$Res>;
   $Res call(
-      {Meal? meal,
+      {MealModel? meal,
       bool isLoading,
       bool hasError,
       String errorMessage,
@@ -81,7 +81,7 @@ class _$MealStateCopyWithImpl<$Res> implements $MealStateCopyWith<$Res> {
       meal: meal == freezed
           ? _value.meal
           : meal // ignore: cast_nullable_to_non_nullable
-              as Meal?,
+              as MealModel?,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -108,7 +108,7 @@ abstract class _$InitialCopyWith<$Res> implements $MealStateCopyWith<$Res> {
       __$InitialCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Meal? meal,
+      {MealModel? meal,
       bool isLoading,
       bool hasError,
       String errorMessage,
@@ -136,7 +136,7 @@ class __$InitialCopyWithImpl<$Res> extends _$MealStateCopyWithImpl<$Res>
       meal: meal == freezed
           ? _value.meal
           : meal // ignore: cast_nullable_to_non_nullable
-              as Meal?,
+              as MealModel?,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ class _$_Initial implements _Initial {
       this.isFavorite = false});
 
   @override
-  final Meal? meal;
+  final MealModel? meal;
   @JsonKey()
   @override
   final bool isLoading;
@@ -218,14 +218,14 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements MealState {
   const factory _Initial(
-      {Meal? meal,
+      {MealModel? meal,
       bool isLoading,
       bool hasError,
       String errorMessage,
       bool isFavorite}) = _$_Initial;
 
   @override
-  Meal? get meal;
+  MealModel? get meal;
   @override
   bool get isLoading;
   @override
