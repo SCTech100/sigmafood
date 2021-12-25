@@ -69,7 +69,9 @@ class HomeView extends StatelessWidget {
                                                 MaterialPageRoute(
                                                     builder: (context) {
                                               return SearchMealView();
-                                            }));
+                                            })).then((value) {
+                                              cubit.getFavoriteCount(context);
+                                            });
                                           },
                                           decoration: InputDecoration(
                                               contentPadding:
@@ -95,7 +97,9 @@ class HomeView extends StatelessWidget {
                                     builder: (context) {
                                       return FavoriteView();
                                     },
-                                  ));
+                                  )).then((value) {
+                                    cubit.getFavoriteCount(context);
+                                  });
                                 },
                                 icon: Icon(Icons.favorite)),
                             Positioned(
@@ -191,7 +195,9 @@ class HomeView extends StatelessWidget {
                                         return MealView(
                                           item: state.listMeal[index],
                                         );
-                                      }));
+                                      })).then((value) {
+                                        cubit.getFavoriteCount(context);
+                                      });
                                     },
                                     child: Hero(
                                       tag: idMeal,
